@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Agency</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Home</h1>
+  </header>
+  <main>
+    <div class="cards-container" id="cities">
+      <!-- Aquí se cargarán las ciudades -->
+    </div>
+  </main>
+  <script>
+    fetch('/api/cities')
+      .then(response => response.json())
+      .then(cities => {
+        const citiesContainer = document.getElementById('cities');
+        cities.forEach(city => {
+          const cityCard = document.createElement('div');
+          cityCard.className = 'card';
+          cityCard.innerHTML = `
+            <img src="${city.image}" alt="${city.name}">
+            <div class="card-content">
+              <h2>${city.name}</h2>
+              <p>${city.description}</p>
+              <p class="price">desde $${city.basePrice}</p>
+              <button onclick="selectCity('${city.id}')">Ver más</button>
+            </div>
+          `;
+          citiesContainer.appendChild(cityCard);
+        });
+      });
+
+    function selectCity(cityId) {
+      window.location.href = `/city.html?id=${cityId}`;
+    }
+  </script>
+</body>
+</html>

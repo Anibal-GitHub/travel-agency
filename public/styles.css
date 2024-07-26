@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3e6ff;
+    color: #4a4a4a;
+  }
+  
+  header {
+    background-color: #7c4dff;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-content h2 {
+    margin: 0.5rem 0;
+  }
+  
+  .card-content p {
+    margin: 0.5rem 0;
+  }
+  
+  .card-content .price {
+    color: #7c4dff;
+    font-weight: bold;
+  }
+  
+  .card-content button {
+    background-color: #7c4dff;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  
+  .card-content button:hover {
+    background-color: #5a36c6;
+  }
+  
+  .city-details {
+    text-align: center;
+  }
+  
+  .city-details img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .hotels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2rem;
+  }
+  
+  .hotels-container .card {
+    width: 200px;
+  }
+  
+  form {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  

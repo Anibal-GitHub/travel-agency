@@ -1,0 +1,38 @@
+{
+    "cities": [
+      {
+        "id": 1,
+        "name": "New York",
+        "image": "/images/NY_image.jpg",
+        "description": "Nueva York es un estado en el noreste de Estados Unidos, conocido por la ciudad de Nueva York y las imponentes Cataratas del Niágara....",
+        "basePrice": 5000,
+        "hotels": [
+          { "name": "Hotel A", "price": 100 },
+          { "name": "Hotel B", "price": 150 }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Los Angeles",
+        "image": "/images/LA_image.jpg",
+        "description": "Los Ángeles es una ciudad en expansión del sur de California y el centro de la industria cinematográfica y televisiva del país...",
+        "basePrice": 4000,
+        "hotels": [
+          { "name": "Hotel B", "price": 150 },
+          { "name": "Hotel C", "price": 200 }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Chicago",
+        "image": "/images/CHI_image.jpg",
+        "description": "Chicago, en el lago Michigan en Illinois, es una de las ciudades más grandes de EE. UU. Famosa por su audaz arquitectura...",
+        "basePrice": 3000,
+        "hotels": [
+          { "name": "Hotel A", "price": 100 },
+          { "name": "Hotel C", "price": 200 }
+        ]
+      }
+    ]
+  }
+  

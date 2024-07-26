@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Ciudad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="cityName"></h1>
+  </header>
+  <main>
+    <div class="city-details">
+      <img id="cityImage" src="" alt="Imagen de la ciudad">
+      <p id="cityDescription"></p>
+      <p id="cityBasePrice"></p>
+    </div>
+    <h2>Hoteles Disponibles</h2>
+    <div class="hotels-container" id="hotels">
+      <!-- Aquí se cargarán los hoteles -->
+    </div>
+
+    <h2>Calculadora de Precio</h2>
+    <form id="priceForm">
+      <label for="numNights">Cantidad de Noches:</label>
+      <input type="number" id="numNights" name="numNights" min="1" value="1">
+      <br>
+      <label for="numPeople">Cantidad de Personas:</label>
+      <input type="number" id="numPeople" name="numPeople" min="1" value="1">
+      <br>
+      <p>Total: $<span id="totalPrice">0</span></p>
+      <button type="button" onclick="calculateTotal()">Calcular Total</button>
+    </form>
+  </main>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const cityId = urlParams.get('id');
+
+    fetch(`/api/cities/${cityId}`)
+      .then(response => response.json())
+      .then(city => {
+        document.getElementById('cityName').innerText = city.name;
+        document.getElementById('cityImage').src = city.image;
+        document.getElementById('cityDescription').innerText = city.description;
+        document.getElementById('cityBasePrice').innerText = `Precio Base: $${city.basePrice}`;
+
+        const hotelsContainer = document.getElementById('hotels');
+        city.hotels.forEach(hotel => {
+          const hotelCard = document.createElement('div');
+          hotelCard.className = 'card';
+          hotelCard.innerHTML = `
+            <div class="card-content">
+              <h3>${hotel.name}</h3>
+              <p>Precio: $${hotel.price}</p>
+              <input type="radio" name="hotel" value="${hotel.price}" onchange="updateHotelPrice(${hotel.price})">
+            </div>
+          `;
+          hotelsContainer.appendChild(hotelCard);
+        });
+      });
+
+    let selectedHotelPrice = 0;
+
+    function updateHotelPrice(price) {
+      selectedHotelPrice = price;
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const numNights = document.getElementById('numNights').value;
+      const numPeople = document.getElementById('numPeople').value;
+      const cityBasePrice = parseFloat(document.getElementById('cityBasePrice').innerText.replace('Precio Base: $', ''));
+      const total = (cityBasePrice + selectedHotelPrice) * numNights * numPeople;
+      document.getElementById('totalPrice').innerText = total;
+    }
+  </script>
+</body>
+</html>
